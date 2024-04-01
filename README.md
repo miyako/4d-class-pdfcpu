@@ -1,2 +1,2 @@
 # 4d-class-pdfcpu
-Classes to use the golang utility pdfcpu
+Classes to use the golang utility [pdfcpu](https://pdfcpu.io).
