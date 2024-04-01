@@ -1,0 +1,217 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 622,
+	"windowMinHeight": 203,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onClick",
+		"onUnload"
+	],
+	"windowTitle": "",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Form.sourceIcon": {
+					"type": "input",
+					"left": 10,
+					"top": 14,
+					"width": 100,
+					"height": 100,
+					"dataSource": "Form:C1466.sourceIcon",
+					"contextMenu": "none",
+					"events": [
+						"onDrop"
+					],
+					"dropping": "custom",
+					"dragging": "none",
+					"method": "ObjectMethods/Form.sourceIcon.4dm",
+					"dataSourceTypeHint": "picture",
+					"pictureFormat": "proportionalCenter",
+					"hideFocusRing": true,
+					"borderStyle": "none"
+				},
+				"Path": {
+					"type": "input",
+					"left": 80,
+					"top": 140,
+					"width": 354,
+					"height": 37,
+					"enterable": false,
+					"focusable": false,
+					"dataSource": "Form:C1466.source.path",
+					"contextMenu": "none",
+					"fill": "transparent",
+					"borderStyle": "none",
+					"sizingY": "move",
+					"sizingX": "grow"
+				},
+				"Split": {
+					"type": "button",
+					"text": "Split",
+					"top": 140,
+					"left": 462,
+					"width": 150,
+					"height": 53,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Split.4dm",
+					"focusable": true,
+					"sizingX": "move",
+					"sizingY": "move"
+				},
+				"path:": {
+					"type": "text",
+					"text": "path:",
+					"top": 141,
+					"left": 10,
+					"width": 63,
+					"height": 16,
+					"textAlign": "right",
+					"fontWeight": "bold",
+					"sizingY": "move",
+					"sizingX": "fixed"
+				},
+				"mode.span": {
+					"type": "radio",
+					"text": "span",
+					"top": 23,
+					"left": 144,
+					"width": 93,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.span",
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "mode",
+					"focusable": false
+				},
+				"mode.bookmark": {
+					"type": "radio",
+					"text": "bookmark",
+					"top": 53,
+					"left": 144,
+					"width": 93,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.bookmark",
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "mode",
+					"focusable": false
+				},
+				"mode.page": {
+					"type": "radio",
+					"text": "page",
+					"top": 83,
+					"left": 144,
+					"width": 93,
+					"height": 22,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "Form:C1466.page",
+					"dataSourceTypeHint": "boolean",
+					"radioGroup": "mode",
+					"focusable": false
+				},
+				"arg.page": {
+					"type": "input",
+					"left": 254,
+					"top": 86,
+					"width": 212,
+					"height": 17,
+					"dataSource": "Form:C1466.arg.page",
+					"dataSourceTypeHint": "integer",
+					"textAlign": "right"
+				},
+				"arg.span": {
+					"type": "input",
+					"left": 254,
+					"top": 28,
+					"width": 212,
+					"height": 17,
+					"dataSource": "Form:C1466.arg.span",
+					"dataSourceTypeHint": "integer",
+					"textAlign": "right"
+				}
+			}
+		},
+		{
+			"objects": {
+				"Form.stdOut": {
+					"type": "input",
+					"left": 258,
+					"top": 41,
+					"width": 354,
+					"height": 81,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"dataSource": "Form:C1466.stdOut",
+					"sizingX": "grow",
+					"sizingY": "grow"
+				},
+				"Form.stdErr": {
+					"type": "input",
+					"left": 258,
+					"top": 131,
+					"width": 354,
+					"height": 81,
+					"enterable": false,
+					"focusable": false,
+					"fill": "transparent",
+					"dataSource": "Form:C1466.stdErr",
+					"sizingY": "move",
+					"sizingX": "grow"
+				},
+				"stdOut:": {
+					"type": "text",
+					"text": "stdOut:",
+					"top": 38,
+					"left": 163,
+					"width": 83,
+					"height": 16,
+					"textAlign": "right",
+					"fontWeight": "bold"
+				},
+				"stdErr:": {
+					"type": "text",
+					"text": "stdErr:",
+					"top": 128,
+					"left": 163,
+					"width": 83,
+					"height": 16,
+					"textAlign": "right",
+					"fontWeight": "bold",
+					"sizingY": "move",
+					"sizingX": "fixed"
+				}
+			}
+		}
+	],
+	"method": "method.4dm",
+	"geometryStamp": 752,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"width": 622,
+	"height": 203
+}

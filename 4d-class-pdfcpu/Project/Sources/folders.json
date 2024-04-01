@@ -1,0 +1,22 @@
+{
+	"CLI": {
+		"classes": [
+			"_CLI",
+			"pdfcpu"
+		]
+	},
+	"Controller": {
+		"classes": [
+			"_CLI_Controller",
+			"_pdfcpu_Controller",
+			"_pdfcpuUI_Controller"
+		]
+	},
+	"Form": {
+		"classes": [
+			"_Form",
+			"pdfcpuForm"
+		]
+	},
+	"trash": {}
+}
