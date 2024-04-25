@@ -14,6 +14,79 @@ Function _path($item : Object) : Text
 	
 	return OB Class:C1730($item).new($item.platformPath; fk platform path:K87:2).path
 	
+Function merge($option : Variant)->$this : cs:C1710.pdfcpu
+	
+	$this:=This:C1470
+	
+	var $commands; $options : Collection
+	$commands:=[]
+	
+	Case of 
+		: (Value type:C1509($option)=Is object:K8:27)
+			$options:=[$option]
+		: (Value type:C1509($option)=Is collection:K8:32)
+			$options:=$option
+	End case 
+	
+	var $outFile : 4D:C1709.File
+	
+	For each ($option; $options)
+		
+		If ($option.outFile#Null:C1517) && (OB Instance of:C1731($option.outFile; 4D:C1709.File))\
+			 && ($option.inFiles#Null:C1517) && ($option.inFiles.length#0)
+			
+			$option.outFile.parent.create()
+			
+			$command:=This:C1470.escape(This:C1470._executablePath)+" merge"
+			
+			If ($option.mode#Null:C1517) && (Value type:C1509($option.mode)=Is text:K8:3)
+				Case of 
+					: ($option.mode="create")
+						$command+=" -m create"
+					: ($option.mode="append")
+						$command+=" -m append"
+					: ($option.mode="zip")
+						$command+=" -m zip"
+				End case 
+			End if 
+		End if 
+		
+		var $inFiles : Collection
+		var $inFile : Variant
+		$inFiles:=[]
+		For each ($inFile; $option.inFiles)
+			Case of 
+				: (Value type:C1509($inFile)=Is text:K8:3)
+					$inFiles.push($inFile)
+				: (Value type:C1509($inFile)=Is object:K8:27) && (OB Instance of:C1731($inFile; 4D:C1709.File)) && ($inFile.exists)
+					$inFiles.push(This:C1470._path($inFile))
+			End case 
+		End for each 
+		
+		If ($option.sort#Null:C1517) && (Bool:C1537($option.sort))
+			$command+=" -s"
+		End if 
+		
+		If ($option.bookmarks#Null:C1517) && (Bool:C1537($option.bookmarks))
+			$command+=" -b"
+		End if 
+		
+		If ($option.divider#Null:C1517) && (Bool:C1537($option.divider))
+			$command+=" -d"
+		End if 
+		
+		$command+=" "+This:C1470.escape(This:C1470._path($option.outFile))
+		
+		For each ($inFile; $inFiles)
+			$command+=" "+This:C1470.quote($inFile)
+		End for each 
+		
+		$commands.push($command)
+		
+	End for each 
+	
+	This:C1470.controller.execute($commands)
+	
 Function split($option : Variant)->$this : cs:C1710.pdfcpu
 	
 	$this:=This:C1470

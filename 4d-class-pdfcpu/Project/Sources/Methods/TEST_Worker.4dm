@@ -7,11 +7,6 @@ If (Count parameters:C259=0)
 	
 Else 
 	
-	$PROJECT:=File:C1566(Structure file:C489; fk platform path:K87:2).name
-	
-	$src:=Folder:C1567(Folder:C1567("/PROJECT/").platformPath; fk platform path:K87:2).parent.folder("Samples/windows")
-	$dst:=Folder:C1567(fk desktop folder:K87:19)
-	
 	$pdfcpu:=cs:C1710.pdfcpu.new(cs:C1710._pdfcpu_Controller)
 	
 	$inFile:=File:C1566("/PROJECT/4D Summit 2011 Pre-Class.pdf")
