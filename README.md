@@ -11,24 +11,24 @@ Download signed and notraised executable for Mac from [Releases](https://github.
 ## Examples
 
 ```4d
-	$PROJECT:=File(Structure file; fk platform path).name
-	
-	$src:=Folder(Folder("/PROJECT/").platformPath; fk platform path).parent.folder("Samples/windows")
-	$dst:=Folder(fk desktop folder)
-	
-	$pdfcpu:=cs.pdfcpu.new(cs._pdfcpu_Controller)
-	
-	$inFile:=File("/PROJECT/4D Summit 2011 Pre-Class.pdf")
-	$outDir:=Folder(fk desktop folder)
-	
-	//before and after page 2
-	$ex1:={inFile: $inFile; outDir: $outDir.folder("page"); mode: "page"; span: 2}
-	
-	//3 pages each
-	$ex2:={inFile: $inFile; outDir: $outDir.folder("span"); span: 3}
-	
-	//before pages 2,4,10
-	$ex3:={inFile: $inFile; outDir: $outDir.folder("pages"); mode: "page"; span: [2; 4; 10]}
-	
-	$pdfcpu.split([$ex1; $ex2; $ex3])
+$PROJECT:=File(Structure file; fk platform path).name
+
+$src:=Folder(Folder("/PROJECT/").platformPath; fk platform path).parent.folder("Samples/windows")
+$dst:=Folder(fk desktop folder)
+
+$pdfcpu:=cs.pdfcpu.new(cs._pdfcpu_Controller)
+
+$inFile:=File("/PROJECT/4D Summit 2011 Pre-Class.pdf")
+$outDir:=Folder(fk desktop folder)
+
+//before and after page 2
+$ex1:={inFile: $inFile; outDir: $outDir.folder("page"); mode: "page"; span: 2}
+
+//3 pages each
+$ex2:={inFile: $inFile; outDir: $outDir.folder("span"); span: 3}
+
+//before pages 2,4,10
+$ex3:={inFile: $inFile; outDir: $outDir.folder("pages"); mode: "page"; span: [2; 4; 10]}
+
+$pdfcpu.split([$ex1; $ex2; $ex3])
 ```
