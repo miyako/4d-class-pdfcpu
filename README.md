@@ -3,10 +3,20 @@
 [![license](https://img.shields.io/github/license/miyako/4d-class-pdfcpu)](LICENSE)
 ![downloads](https://img.shields.io/github/downloads/miyako/4d-class-pdfcpu/total)
 
-
 Classes to use the golang utility [pdfcpu](https://pdfcpu.io).
 
-Download signed and notraised executable for Mac from [Releases](https://github.com/miyako/4d-class-pdfcpu/releases).
+## dependencies.json
+
+```json
+{
+	"dependencies": {
+		"pdfcpu": {
+			"github": "miyako/pdfcpu",
+			"version": "^0.0.1"
+		}
+	}
+}
+```
 
 ## Examples
 
@@ -16,7 +26,8 @@ $PROJECT:=File(Structure file; fk platform path).name
 $src:=Folder(Folder("/PROJECT/").platformPath; fk platform path).parent.folder("Samples/windows")
 $dst:=Folder(fk desktop folder)
 
-$pdfcpu:=cs.pdfcpu.new(cs._pdfcpu_Controller)
+var $pdfcpu : cs.pdfcpu.pdfcpu
+$pdfcpu:=cs.pdfcpu.pdfcpu.new(cs.pdfcpu._pdfcpu_Controller)
 
 $inFile:=File("/PROJECT/4D Summit 2011 Pre-Class.pdf")
 $outDir:=Folder(fk desktop folder)
