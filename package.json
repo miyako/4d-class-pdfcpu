@@ -1,0 +1,18 @@
+{
+  "name": "pdfcpu",
+  "description": "pdfcpu",
+  "author": [
+    "Horst Rutter <hhrutter@gmail.com>",
+    "Keisuke Miyako <keisuke.miyako@4D.com>"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/miyako/pdfcpu",
+  "version": "0.0.0",
+  "tool": {
+    "platform": "macos",
+    "branch": "20%20Rx",
+    "version": "20%20R6",
+    "build": "latest",
+    "arch": "arm"
+  }
+}
