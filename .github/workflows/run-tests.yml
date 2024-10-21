@@ -26,9 +26,9 @@ jobs:
       fail-fast: false
       matrix:
         TOOL4D_PLATFORM: ["windows-latest", "macos-latest"]
-        TOOL4D_BRANCH: [20%20Rx]
-        TOOL4D_VERSION: [20%20R6]
-        TOOL4D_BUILD: [100159]
+        TOOL4D_BRANCH: [20.x]
+        TOOL4D_VERSION: [20.5]
+        TOOL4D_BUILD: [latest]
     runs-on: ${{ matrix.TOOL4D_PLATFORM }}
     
     steps:
