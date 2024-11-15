@@ -12,7 +12,7 @@ Classes to use the golang utility [pdfcpu](https://pdfcpu.io).
 	"dependencies": {
 		"pdfcpu": {
 			"github": "miyako/pdfcpu",
-			"version": "^0.0.1"
+			"version": "*"
 		}
 	}
 }
