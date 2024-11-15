@@ -14,6 +14,10 @@ Function _path($item : Object) : Text
 	
 	return OB Class:C1730($item).new($item.platformPath; fk platform path:K87:2).path
 	
+Function get worker() : 4D:C1709.SystemWorker
+	
+	return This:C1470._controller.worker
+	
 Function extract($option : Variant)->$this : cs:C1710.pdfcpu
 	
 	$this:=This:C1470
@@ -68,6 +72,64 @@ Function extract($option : Variant)->$this : cs:C1710.pdfcpu
 	End for each 
 	
 	This:C1470.controller.execute($commands)
+	
+Function info($option : Object) : Object
+	
+	$this:=This:C1470
+	
+	If ($option#Null:C1517)
+		
+		var $inFile : 4D:C1709.File
+		
+		If ($option.inFile#Null:C1517) && (OB Instance of:C1731($option.inFile; 4D:C1709.File)) && ($option.inFile.exists)
+			
+			$command:=This:C1470.escape(This:C1470._executablePath)+" info -json"
+			
+			If ($option.unit#Null:C1517) && (Value type:C1509($option.unit)=Is text:K8:3)
+				Case of 
+					: ($option.unit="po@")
+						$command+=" -u po"
+					: ($option.unit="in@")
+						$command+=" -u in"
+					: ($option.unit="cm@")
+						$command+=" -u cm"
+					: ($option.unit="mm@")
+						$command+=" -u mm"
+				End case 
+			End if 
+			
+			Case of 
+				: (Value type:C1509($option.pages)=Is collection:K8:32)
+					$command+=" -p "+$option.pages.join(","; ck ignore null or empty:K85:5)
+				: ($option.pages#Null:C1517) && (Value type:C1509($option.pages)=Is real:K8:4)
+					$command+=" -p "+String:C10($option.pages)
+			End case 
+			
+			$command+=" "+This:C1470.escape(This:C1470._path($option.inFile))
+			
+			This:C1470.controller.execute($command)
+			
+			var $json : Text
+			$json:=This:C1470.worker.wait().response
+			
+			If ($json#"")
+				
+				ARRAY TEXT:C222($pos; 0)
+				ARRAY TEXT:C222($len; 0)
+				
+				If (Match regex:C1019("(?s)(\\{.+)"; $json; 1; $pos; $len))
+					$json:=Substring:C12($json; $pos{1}; $len{1})
+				End if 
+				
+				return JSON Parse:C1218($json; Is object:K8:27)
+				
+			End if 
+			
+		End if 
+		
+	End if 
+	
+	return Null:C1517
 	
 Function merge($option : Variant)->$this : cs:C1710.pdfcpu
 	
