@@ -4,8 +4,6 @@ Class constructor($controller : 4D:C1709.Class)
 	
 	Super:C1705("pdfcpu"; $controller)
 	
-Function onResponse($files : Collection; $parameters : Collection)
-	
 Function terminate()
 	
 	This:C1470.controller.terminate()
