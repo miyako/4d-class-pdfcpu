@@ -2,7 +2,9 @@ Class extends _CLI
 
 Class constructor($controller : 4D:C1709.Class)
 	
-	Super:C1705("pdfcpu"; $controller)
+	Super:C1705("pdfcpu"; $controller=Null:C1517 ? cs:C1710._pdfcpu_Controller : $controller)
+	
+	This:C1470._EOL:="\n"  //also on windows
 	
 Function terminate()
 	
@@ -12,9 +14,13 @@ Function _path($item : Object) : Text
 	
 	return OB Class:C1730($item).new($item.platformPath; fk platform path:K87:2).path
 	
+Function get controller : cs:C1710._pdfcpu_Controller
+	
+	return This:C1470._controller
+	
 Function get worker() : 4D:C1709.SystemWorker
 	
-	return This:C1470._controller.worker
+	return This:C1470.controller.worker
 	
 Function extract($option : Variant)->$this : cs:C1710.pdfcpu
 	
@@ -69,7 +75,7 @@ Function extract($option : Variant)->$this : cs:C1710.pdfcpu
 		
 	End for each 
 	
-	This:C1470.controller.execute($commands)
+	This:C1470.controller.init().execute($commands)
 	
 Function info($option : Object) : Object
 	
@@ -105,15 +111,15 @@ Function info($option : Object) : Object
 			
 			$command+=" "+This:C1470.escape(This:C1470._path($option.inFile))
 			
-			This:C1470.controller.execute($command)
+			This:C1470.controller.init().execute($command)
 			
 			var $json : Text
 			$json:=This:C1470.worker.wait().response
 			
 			If ($json#"")
 				
-				ARRAY TEXT:C222($pos; 0)
-				ARRAY TEXT:C222($len; 0)
+				ARRAY LONGINT:C221($pos; 0)
+				ARRAY LONGINT:C221($len; 0)
 				
 				If (Match regex:C1019("(?s)(\\{.+)"; $json; 1; $pos; $len))
 					$json:=Substring:C12($json; $pos{1}; $len{1})
@@ -200,7 +206,7 @@ Function merge($option : Variant)->$this : cs:C1710.pdfcpu
 		
 	End for each 
 	
-	This:C1470.controller.execute($commands)
+	This:C1470.controller.init().execute($commands)
 	
 Function split($option : Variant)->$this : cs:C1710.pdfcpu
 	
@@ -256,4 +262,4 @@ Function split($option : Variant)->$this : cs:C1710.pdfcpu
 		
 	End for each 
 	
-	This:C1470.controller.execute($commands)
+	This:C1470.controller.init().execute($commands)
